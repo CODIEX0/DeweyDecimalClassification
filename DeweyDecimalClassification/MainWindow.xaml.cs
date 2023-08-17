@@ -14,6 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DeweyDecimalClassification.Windows;
 
+/*
+* CODE ATTRIBUTION D- RANDOM CLASS
+* https://learn.microsoft.com/en-us/dotnet/api/system.random?view=net-7.0
+*/
 namespace DeweyDecimalClassification
 {
     /// <summary>
@@ -34,14 +38,14 @@ namespace DeweyDecimalClassification
             List<int> index = GenerateRandomIndex();
             List<TextBlock> textBlocks = new List<TextBlock>() { replaceBooks.txtcn1, replaceBooks.txtcn2, replaceBooks.txtcn3, replaceBooks.txtcn4, replaceBooks.txtcn5, replaceBooks.txtcn6, replaceBooks.txtcn7, replaceBooks.txtcn8, replaceBooks.txtcn9, replaceBooks.txtcn10 };
 
-            Console.WriteLine("Assigned values:");
+            //assign the randomly generated call numbers to the text blocks, to be displayed to the user
             for(int i = 0; i < callNumbers.Count; i++)
             {
                 textBlocks[i].Text = callNumbers[i];
             }
 
-            Visibility = Visibility.Hidden;
-
+            //close the main window and open the replace books window
+            Visibility = Visibility.Collapsed;
             replaceBooks.Show();
         }
 
@@ -62,9 +66,6 @@ namespace DeweyDecimalClassification
             List<string> callNumbers = new List<string>();
 
             List<int> numbers = new List<int> { 600, 200, 800, 000, 700, 400, 900, 100, 300, 500 };
-
-            // Pre-defined list of Dewey Decimal System call numbers
-            List<string> orderedCallNumbers = new List<string> { "000", "100", "200", "300", "400", "500", "600", "700", "800", "900" };
 
             // Create a new instance of the Random class
             Random random = new Random();
