@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeweyDecimalClassification.Windows"
         mc:Ignorable="d"
-        Title="Replace Books" Height="649.5" Width="1100" Background="#FFECFEFF"
+        Title="Replace Books" Height="649.5" Width="1100" Background="#FFECFEFF"        
         WindowStartupLocation="CenterScreen">
     <Grid Height="630" Width="1100" >
 
         <Button Name="btnBack" Content="Back" Style="{StaticResource mainButton}"  Height="58" Margin="10,10,944,562" Click="btnBack_Click" />
+
+        <TextBlock x:Name="txtComment" FontSize="30" FontWeight="UltraBlack" Height="50" Foreground="#FF00FF6C" Margin="201,18,229,562" HorizontalAlignment="Center" />
 
         <StackPanel Name="stackPanel" Margin="1000,112,71,112">
             <Grid>
@@ -70,7 +72,7 @@
                 <TextBlock Text="Please Reorder The Call Numbers In Ascending Order" FontSize="28" FontWeight="UltraBlack" Height="50" Foreground="White" Margin="9,2,9,148" />
 
                 <Border Background="AliceBlue" CornerRadius="20" Width="110" Height="50" Margin="86,50,554,97">
-                    <TextBox Name="tbxcn1" FontSize="25" Width="70" Height="40" FontWeight="Black" Foreground="#FF70D4BB" TextAlignment="Center" BorderBrush="#00ABADB3" Background="Transparent" TextChanged="tbxcn1_TextChanged"/>
+                    <TextBox Name="tbxcn1" FontSize="25" Width="70" Height="40" FontWeight="Black" Foreground="#FF70D4BB" TextAlignment="Center" BorderBrush="#00ABADB3" Background="Transparent" TextChanged="tbxcn1_TextChanged" />
                 </Border>
 
                 <Border Background="AliceBlue" CornerRadius="20" Width="110" Height="50" Margin="201,50,439,97">
