@@ -11,18 +11,20 @@
 
         <Button Name="btnBack" Content="Back" Style="{StaticResource mainButton}"  Height="58" Margin="10,10,944,562" Click="btnBack_Click" />
 
-        <TextBlock x:Name="txtComment" FontSize="30" FontWeight="UltraBlack" Height="50" Foreground="#FF00FF6C" Margin="201,18,229,562" HorizontalAlignment="Center" />
+        <TextBlock x:Name="txtComment" FontSize="30" FontWeight="UltraBlack" Height="50" Foreground="#FF00FFBF" Margin="201,18,229,562" HorizontalAlignment="Center" />
+
+        <Image x:Name="ImgFire" Source="/Tasks/fire.png" Margin="967,34,38,510" Visibility="Hidden"/>
 
         <StackPanel Name="stackPanel" Margin="1000,112,71,112">
             <Grid>
-                <ProgressBar Name="progressBar" Height="406" Width="29" Foreground="#FF00FFBE" Orientation="Vertical"/>
+                <ProgressBar Name="progressBar" Height="406" Width="29" Background="#FFECFEFF" Foreground="#FF06A67E" Orientation="Vertical"/>
                 <TextBlock Text="{Binding ElementName=progressBar, Path=Value, StringFormat={}{0:0}%}" FontSize="10" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Grid>            
+            </Grid>
         </StackPanel>
 
         <Border Background="#FFA6EBDA" CornerRadius="20" Width="750" Height="200" Margin="121,96,229,334"  >
             <Grid>
-                <TextBlock Text="Here Are The Call Numbers To Be Reordered" FontSize="30" FontWeight="UltraBlack" Height="50" Foreground="White" Margin="47.5,2,47.5,148" />
+                <TextBlock Name="txtOrderNumbers" Text="Call Numbers To Be Reordered" FontSize="30" FontWeight="UltraBlack" Height="50" Foreground="White" Margin="0,2,0,148" HorizontalAlignment="Center" />
 
                 <Border Background="AliceBlue" CornerRadius="20" Width="110" Height="50" Margin="546,120,94,27">
                     <TextBlock Name="txtcn10" FontSize="30" Width="70" Height="40" FontWeight="UltraBlack" Foreground="#FF70D4BB" TextAlignment="Center"/>
@@ -69,7 +71,7 @@
 
         <Border Background="#FFBCE8DD" CornerRadius="20" Width="750" Height="200" Margin="121,315,229,115"  >
             <Grid>
-                <TextBlock Text="Please Reorder The Call Numbers In Ascending Order" FontSize="28" FontWeight="UltraBlack" Height="50" Foreground="White" Margin="9,2,9,148" />
+                <TextBlock Text="Reorder The Call Numbers In Ascending Order" FontSize="28" FontWeight="UltraBlack" Height="50" Foreground="White" HorizontalAlignment="Center" Margin="9,2,9,148" />
 
                 <Border Background="AliceBlue" CornerRadius="20" Width="110" Height="50" Margin="86,50,554,97">
                     <TextBox Name="tbxcn1" FontSize="25" Width="70" Height="40" FontWeight="Black" Foreground="#FF70D4BB" TextAlignment="Center" BorderBrush="#00ABADB3" Background="Transparent" TextChanged="tbxcn1_TextChanged" />
@@ -114,6 +116,6 @@
             </Grid>
         </Border>
 
-        <Button Name="btnReplaceBooks" Content="Reorder Numbers"  Style="{StaticResource mainButton}"  Height="58" Width="250" Margin="371,534,479,38" Click="btnReplaceBooks_Click" />
+        <Button Name="btnReplaceBooks" Content="Replace Books"  Style="{StaticResource mainButton}"  Height="58" Width="250" Margin="371,534,479,38" Click="btnReplaceBooks_Click" />
     </Grid>
 </Window>

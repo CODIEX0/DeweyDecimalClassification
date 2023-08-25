@@ -62,15 +62,17 @@ namespace DeweyDecimalClassification.Windows
                 List<TextBox> userOrder = new List<TextBox>() { this.tbxcn1, this.tbxcn2, this.tbxcn3, this.tbxcn4, this.tbxcn5, this.tbxcn6, this.tbxcn7, this.tbxcn8, this.tbxcn9, this.tbxcn10 };
                
                 // Pre-defined list of Dewey Decimal System call numbers
-                //List<int> callNumbers = new List<int> { 600, 200, 800, 000, 700, 400, 900, 100, 300, 500 };
-                List<string> callNumbers = new List<string> { "000", "100", "200", "300", "400", "500", "600", "700", "800", "900" };
+                List<int> callNumbers = new List<int> { 600, 200, 800, 000, 700, 400, 900, 100, 300, 500 };
+                List<string> callNumbersString = new List<string> { "000", "100", "200", "300", "400", "500", "600", "700", "800", "900" };
 
-                //QuickSort(callNumbers, 0, callNumbers.Count - 1);
-
+                QuickSort(callNumbers, 0, callNumbers.Count - 1);
+                
                 bool correctOrder = true;
+
                 for (int i = 0; i < userOrder.Count; i++)
                 {
-                    if (userOrder[i].Text != callNumbers[i].ToString())
+
+                    if (userOrder[i].Text != callNumbersString[i])
                     {
                         correctOrder = false;
                         break;
@@ -79,18 +81,31 @@ namespace DeweyDecimalClassification.Windows
 
                 if (correctOrder)
                 {
+                    ImgFire.Visibility = Visibility.Visible;
                     //alert the user that they ordered the numbers correctly
-                    MessageBox.Show("Congratulations! Your ordering is perfect. ;-)", "Books Replaced", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Congratulations! Your ordering is perfect. ;-)", "Books Replaced", MessageBoxButton.OK, MessageBoxImage.Information);                    
                 }
                 else
                 {
+                    progressBar.Foreground = Brushes.Red; // change the foreground color 
+                    percentage = 0;  // set the percentage of the progress bar to 0
+
+                    //alert the user that they're ordering is incorrect.
                     MessageBox.Show("Oops! Your ordering is incorrect. Here's the correct order", "Order Incorrect", MessageBoxButton.OK, MessageBoxImage.Error);
-                    for (int i = 0; i < callNumbers.Count; i++)
+
+                    txtOrderNumbers.Text = "Here Are The Call Numbers In Ascending Order";
+                    txtComment.Text = "Nice Try, Feel Free To Try Again."; // motivate the user with a nice comment
+
+
+                    // Animation to update the progress bar with the new percentage
+                    DoubleAnimation da = new DoubleAnimation(percentage, duration);
+                    progressBar.BeginAnimation(ProgressBar.ValueProperty, da);
+
+                    for (int i = 0; i < textBlocks.Count; i++)
                     {
-                        progressBar.Value = 0;
                         if (i == 0)
                         {
-                            textBlocks[i].Text = callNumbers[i].ToString();
+                            textBlocks[i].Text = callNumbers[i].ToString() + "00";
                             userOrder[i].Text = null;
                         }
                         else
@@ -177,6 +192,7 @@ namespace DeweyDecimalClassification.Windows
             // Check if the user entered the correct call number
             if (enteredCorrectValue)
             {
+                progressBar.Foreground = Brushes.Red; // change the foreground color 
                 percentage += 10; // Increase percentage by 10
                 txtComment.Text = "Nice Start"; // motivate the user with a nice comment
                 // If the user entered the correct call number, disable the text box and
@@ -195,6 +211,7 @@ namespace DeweyDecimalClassification.Windows
             // Check if the user entered the correct call number
             if (enteredCorrectValue)
             {
+                progressBar.Foreground = Brushes.IndianRed; // change the foreground color 
                 percentage += 10; // Increase percentage by 10
                 txtComment.Text = "Keep Going"; // motivate the user with a nice comment
                 // If the user entered the correct call number, disable the text box and
@@ -213,6 +230,8 @@ namespace DeweyDecimalClassification.Windows
             // Check if the user entered the correct call number
             if (enteredCorrectValue)
             {
+
+                progressBar.Foreground = Brushes.LightCoral; // change the foreground color 
                 percentage += 10; // Increase percentage by 10
                 txtComment.Text = "You're On fire"; // motivate the user with a nice comment
                 // If the user entered the correct call number, disable the text box and
@@ -231,6 +250,7 @@ namespace DeweyDecimalClassification.Windows
             // Check if the user entered the correct call number
             if (enteredCorrectValue)
             {
+                progressBar.Foreground = Brushes.Coral; // change the foreground color 
                 percentage += 10; // Increase percentage by 10
                 txtComment.Text = "Great Job"; // motivate the user with a nice comment
                 // If the user entered the correct call number, disable the text box and
@@ -249,6 +269,7 @@ namespace DeweyDecimalClassification.Windows
             // Check if the user entered the correct call number
             if (enteredCorrectValue)
             {
+                progressBar.Foreground = Brushes.DarkOrange; // change the foreground color 
                 percentage += 10; // Increase percentage by 10
                 txtComment.Text = "Awesome Work"; // motivate the user with a nice comment
                 // If the user entered the correct call number, disable the text box and
@@ -267,6 +288,7 @@ namespace DeweyDecimalClassification.Windows
             // Check if the user entered the correct call number
             if (enteredCorrectValue)
             {
+                progressBar.Foreground = Brushes.Gold; // change the foreground color 
                 percentage += 10; // Increase percentage by 10
                 txtComment.Text = "Impressive Streak"; // motivate the user with a nice comment
                 // If the user entered the correct call number, disable the text box and
@@ -280,6 +302,7 @@ namespace DeweyDecimalClassification.Windows
 
         private void tbxcn7_TextChanged(object sender, TextChangedEventArgs e)
         {
+            progressBar.Foreground = Brushes.Khaki; // change the foreground color 
             TextBox textBox = (TextBox)sender; // Get the sender TextBox
             bool enteredCorrectValue = textBox.Text.Equals(orderedCallNumbers[6]);
             // Check if the user entered the correct call number
@@ -303,6 +326,7 @@ namespace DeweyDecimalClassification.Windows
             // Check if the user entered the correct call number
             if (enteredCorrectValue)
             {
+                progressBar.Foreground = Brushes.LightGreen; // change the foreground color 
                 percentage += 10; // Increase percentage by 10
                 txtComment.Text = "Incredible Accuracy"; // motivate the user with a nice comment
                 // If the user entered the correct call number, disable the text box and
@@ -321,6 +345,7 @@ namespace DeweyDecimalClassification.Windows
             // Check if the user entered the correct call number
             if (enteredCorrectValue)
             {
+                progressBar.Foreground = Brushes.MediumSeaGreen; // change the foreground color 
                 percentage += 10; // Increase percentage by 10
                 txtComment.Text = "Unstoppable Force"; // motivate the user with a nice comment
                 // If the user entered the correct call number, disable the text box and
@@ -339,6 +364,7 @@ namespace DeweyDecimalClassification.Windows
             // Check if the user entered the correct call number
             if (enteredCorrectValue)
             {
+                progressBar.Foreground = Brushes.Green; // change the foreground color 
                 percentage += 10; // Increase percentage by 10
                 txtComment.Text = "Triumphant Mastery"; // motivate the user with a nice comment
                 // If the user entered the correct call number, disable the text box and
