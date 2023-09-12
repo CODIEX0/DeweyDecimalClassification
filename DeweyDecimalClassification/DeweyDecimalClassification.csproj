@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Tasks\fire.png" />
+    <None Remove="icon.png" />
+    <None Remove="Img\fire.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Tasks\fire.png" />
+    <Resource Include="icon.png" />
+    <Resource Include="Img\fire.png" />
   </ItemGroup>
 
 </Project>

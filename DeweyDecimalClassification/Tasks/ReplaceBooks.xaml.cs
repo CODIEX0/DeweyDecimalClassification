@@ -82,6 +82,7 @@ namespace DeweyDecimalClassification.Windows
                 if (correctOrder)
                 {
                     ImgFire.Visibility = Visibility.Visible;
+                    txtComment.Text = "Your ordering is perfect. ;-)";
                     //alert the user that they ordered the numbers correctly
                     MessageBox.Show("Congratulations! Your ordering is perfect. ;-)", "Books Replaced", MessageBoxButton.OK, MessageBoxImage.Information);                    
                 }
