@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeweyDecimalClassification"
         mc:Ignorable="d"
+        Icon="/icon.png"
         Title="Dewey Decimal Classification App" Height="515.9" Width="900" Background="#FFECFEFF"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         >
     <Grid Height="500" Width="900" >
 
-        <Border Background="#FFA6EBDA" CornerRadius="40" Height="120" Width="850" Margin="23,38,23,342">
+        <Border Background="#FF4BD1A8" CornerRadius="40" Height="120" Width="850" Margin="23,38,23,342">
             <Grid>
                 <TextBlock Text="Welcome To The Dewey" FontSize="40" FontWeight="UltraBold" Foreground="White" Height="60" Margin="186,0,186,60" />
                 <TextBlock Text="Decimal Classification Training App!" FontSize="40" FontWeight="UltraBold" Foreground="White" Height="60" Margin="68,60,68,0"/>
@@ -19,7 +20,7 @@
         </Border>
 
 
-        <TextBlock Text="Choose between these three tasks:" FontSize="20" FontWeight="Medium" Foreground="#FFA8D4C9" Width="312" Height="30" Margin="294,182,294,288"/>
+        <TextBlock Text="Choose between these three tasks:" FontSize="20" FontWeight="Medium" Foreground="#FF32D4A3" Width="312" Height="30" Margin="294,182,294,288"/>
 
         <Button Name="btnReplaceBooks" Content="Replacing Books"  Style="{StaticResource mainButton}" Margin="325,223,325,203" Height="58" Width="250" Click="btnReplaceBooks_Click" />
 

@@ -5,24 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeweyDecimalClassification.Windows"
         mc:Ignorable="d"
+        Icon="/icon.png"
         Title="Replace Books" Height="649.5" Width="1100" Background="#FFECFEFF"        
         WindowStartupLocation="CenterScreen">
     <Grid Height="630" Width="1100" >
 
         <Button Name="btnBack" Content="Back" Style="{StaticResource mainButton}"  Height="58" Margin="10,10,944,562" Click="btnBack_Click" />
 
-        <TextBlock x:Name="txtComment" FontSize="30" FontWeight="UltraBlack" Height="50" Foreground="#FF00FFBF" Margin="201,18,229,562" HorizontalAlignment="Center" />
+        <TextBlock x:Name="txtComment" Style="{StaticResource titleText}" Foreground="#FF23CB98" Margin="201,18,229,562" HorizontalAlignment="Center" />
 
-        <Image x:Name="ImgFire" Source="/Tasks/fire.png" Margin="967,34,38,510" Visibility="Hidden"/>
+        <Image x:Name="ImgFire" Margin="967,34,38,510" Visibility="Hidden" Source="/Img/fire.png"/>
 
         <StackPanel Name="stackPanel" Margin="1000,112,71,112">
             <Grid>
-                <ProgressBar Name="progressBar" Height="406" Width="29" Background="#FFECFEFF" Foreground="#FF06A67E" Orientation="Vertical"/>
+                <ProgressBar Name="progressBar" Height="406" Width="29" Background="#FFECFEFF" Foreground="#FF23CB98" Orientation="Vertical"/>
                 <TextBlock Text="{Binding ElementName=progressBar, Path=Value, StringFormat={}{0:0}%}" FontSize="10" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </StackPanel>
 
-        <Border Background="#FFA6EBDA" CornerRadius="20" Width="750" Height="200" Margin="121,96,229,334"  >
+        <Border Background="#FFA6EBDA" CornerRadius="20" Width="750" Height="200" Margin="175,86,175,344"  >
             <Grid>
                 <TextBlock Name="txtOrderNumbers" Text="Call Numbers To Be Reordered" FontSize="30" FontWeight="UltraBlack" Height="50" Foreground="White" Margin="0,2,0,148" HorizontalAlignment="Center" />
 
@@ -69,7 +70,7 @@
             </Grid>
         </Border>
 
-        <Border Background="#FFBCE8DD" CornerRadius="20" Width="750" Height="200" Margin="121,315,229,115"  >
+        <Border Background="#FFA6EBDA" CornerRadius="20" Width="750" Height="200" Margin="175,318,175,112"  >
             <Grid>
                 <TextBlock Text="Reorder The Call Numbers In Ascending Order" FontSize="28" FontWeight="UltraBlack" Height="50" Foreground="White" HorizontalAlignment="Center" Margin="9,2,9,148" />
 
@@ -116,6 +117,6 @@
             </Grid>
         </Border>
 
-        <Button Name="btnReplaceBooks" Content="Replace Books"  Style="{StaticResource mainButton}"  Height="58" Width="250" Margin="371,534,479,38" Click="btnReplaceBooks_Click" />
+        <Button Name="btnReplaceBooks" Content="Replace Books"  Style="{StaticResource mainButton}"  Height="58" Width="250" Margin="425,536,425,36" Click="btnReplaceBooks_Click" />
     </Grid>
 </Window>
