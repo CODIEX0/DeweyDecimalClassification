@@ -13,5 +13,10 @@ namespace DeweyDecimalClassification
     /// </summary>
     public partial class App : Application
     {
+        private void Appication_Startup(object sender, StartupEventArgs e)
+        {
+            SignIn signIn = new SignIn();
+            signIn.Show();
+        }
     }
 }

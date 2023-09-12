@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
 
 /*
 * CODE ATTRIBUTION - PROGRESS BAR / ANIMATION
@@ -29,11 +20,8 @@ using static System.Net.Mime.MediaTypeNames;
 * https://learn.microsoft.com/en-us/dotnet/api/system.timespan.duration?view=net-7.0
 */
 
-namespace DeweyDecimalClassification.Windows
+namespace DeweyDecimalClassification.Tasks
 {
-    /// <summary>
-    /// Interaction logic for ReplaceBooks.xaml
-    /// </summary>
     public partial class ReplaceBooks : Window
     {
         // Pre-defined list of Dewey Decimal System call numbers
@@ -82,6 +70,7 @@ namespace DeweyDecimalClassification.Windows
                 if (correctOrder)
                 {
                     ImgFire.Visibility = Visibility.Visible;
+                    txtComment.Text = "Your ordering is perfect. ;-)";
                     //alert the user that they ordered the numbers correctly
                     MessageBox.Show("Congratulations! Your ordering is perfect. ;-)", "Books Replaced", MessageBoxButton.OK, MessageBoxImage.Information);                    
                 }
