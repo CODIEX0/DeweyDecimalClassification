@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DeweyDecimalClassification.Windows;
+using DeweyDecimalClassification.Tasks;
 
 /*
 * CODE ATTRIBUTION D- RANDOM CLASS
@@ -51,14 +51,15 @@ namespace DeweyDecimalClassification
 
         private void btnIdentifyingAreas_Click(object sender, RoutedEventArgs e)
         {
-
-            //alert the user that they signed in successfully
-            MessageBox.Show("The Identifying Areas task is not implemented yet. ", "Feature not implemented!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            IdentifyAreas identifyAreas = new IdentifyAreas();
+            //close the main window and open the replace books window
+            Visibility = Visibility.Collapsed;
+            identifyAreas.Show();
         }
 
         private void btnFindingCallNumbers_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("The Finding Call Numbers task is not implemented yet.", "Feature not implemented!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("The Finding Call Numbers task is not implemented yet.", "Feature coming soon!", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         static List<string> GenerateRandomCallNumbers()
@@ -103,6 +104,6 @@ namespace DeweyDecimalClassification
             }
 
             return numbers;
-        }
+        }               
     }
 }

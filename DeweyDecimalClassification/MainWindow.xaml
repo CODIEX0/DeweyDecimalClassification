@@ -12,6 +12,28 @@
         >
     <Grid Height="500" Width="900" >
 
+        <Label Name="lblName" Foreground="#FF4BD1A8" Content="Student Name: " FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="47,1,0,0" VerticalAlignment="Top"  Width="151"/>
+        <Label Name="txtName" Content="" FontSize="20" Foreground="#FF4BD1A8" FontWeight="Bold" HorizontalAlignment="Left" Margin="198,1,0,0" VerticalAlignment="Top" Width="258" Height="37" ToolTipService.ShowDuration="9000">
+            <Label.ToolTip>
+                <ToolTip>
+                    <StackPanel>
+                        <TextBlock Text="Name and Surname." HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </ToolTip>
+            </Label.ToolTip>
+        </Label>
+
+        <Label Name="lblStudentNumber" Foreground="#FF4BD1A8" Content="Student Number: " FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="456,1,0,0" VerticalAlignment="Top"  Width="173"/>
+        <Label Name="txtStudentNumber" Content="" FontSize="20" Foreground="#FF4BD1A8" FontWeight="Bold" HorizontalAlignment="Left" Margin="629,0,0,0" VerticalAlignment="Top" Width="206" Height="37" ToolTipService.ShowDuration="9000">
+            <Label.ToolTip>
+                <ToolTip>
+                    <StackPanel>
+                        <TextBlock Text="Name and Surname." HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </ToolTip>
+            </Label.ToolTip>
+        </Label>
+
         <Border Background="#FF4BD1A8" CornerRadius="40" Height="120" Width="850" Margin="23,38,23,342">
             <Grid>
                 <TextBlock Text="Welcome To The Dewey" FontSize="40" FontWeight="UltraBold" Foreground="White" Height="60" Margin="186,0,186,60" />
