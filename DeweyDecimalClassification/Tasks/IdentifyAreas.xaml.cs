@@ -69,19 +69,17 @@ namespace DeweyDecimalClassification.Tasks
                 {
                     // Matching descriptions to call numbers
                     Column1.Items.Add(new ListBoxItem { Content = description });
-                    Column2.Items.Add(new ListBoxItem { Content = questionKey });
                 }
                 else
                 {
                     // Matching call numbers to descriptions
                     Column1.Items.Add(new ListBoxItem { Content = questionKey });
-                    Column2.Items.Add(new ListBoxItem { Content = description });
                 }
 
-                // Generate seven possible answers for the second column
+                // Generate four possible answers for the second column
                 var possibleAnswers = new List<string>();
 
-                // Add the correct answer to the possible answers
+                // Generate one correct answer
                 possibleAnswers.Add(matchDescriptionToCallNumber ? questionKey : description);
 
                 // Generate three incorrect answers
@@ -184,6 +182,11 @@ namespace DeweyDecimalClassification.Tasks
             progressBar.BeginAnimation(ProgressBar.ValueProperty, da);
 
             percentage = newPercentage;
+
+            if (percentage >= 100)
+            {
+                txtComment.Text = "You have answered all 10 questions!";
+            }
         }
 
        
@@ -233,49 +236,57 @@ namespace DeweyDecimalClassification.Tasks
 
         private void Column2Item_Click(object sender, MouseButtonEventArgs e)
         {
-            var listBox = (ListBox)sender; // The sender should be the ListBox itself
-
-            if (listBox.SelectedItem != null && listBox.SelectedItem is ListBoxItem selectedItem)
+            if (currentQuestionIndex < questionKeys.Count)
             {
-                if (selectedItem.IsEnabled)
+                var listBox = (ListBox)sender; // The sender should be the ListBox itself
+
+                if (listBox.SelectedItem != null && listBox.SelectedItem is ListBoxItem selectedItem)
                 {
-                    selectedItem.IsEnabled = false;
-
-                    if (matchDescriptionToCallNumber)
+                    if (selectedItem.IsEnabled)
                     {
-                        var selectedAnswer = selectedItem.Content.ToString();
-                        var callNumber = questionKeys[currentQuestionIndex];
-                        if (selectedAnswer == callNumber)
+                        selectedItem.IsEnabled = false;
+
+                        if (matchDescriptionToCallNumber)
                         {
-                            MessageBox.Show("Correct!");
-                            correctAnswers++;
+                            var selectedAnswer = selectedItem.Content.ToString();
+                            var callNumber = questionKeys[currentQuestionIndex];
+                            if (selectedAnswer == callNumber)
+                            {
+                                MessageBox.Show("Correct!");
+                                correctAnswers++;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Incorrect. The correct answer is " + callNumber);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Incorrect. The correct answer is " + callNumber);
-                        }
-                    }
-                    else
-                    {
-                        var selectedAnswer = selectedItem.Content.ToString();
-                        var description = questionDictionary[questionKeys[currentQuestionIndex]];
-                        if (selectedAnswer == description)
-                        {
-                            MessageBox.Show("Correct!");
-                            correctAnswers++;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Incorrect. The correct answer is " + description);
-                        }
-                    }
+                            var selectedAnswer = selectedItem.Content.ToString();
+                            var description = questionDictionary[questionKeys[currentQuestionIndex]];
+                            if (selectedAnswer == description)
+                            {
+                                MessageBox.Show("Correct!");
+                                correctAnswers++;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Incorrect. The correct answer is " + description);
+                            }
 
-                    currentQuestionIndex++;
-                    matchDescriptionToCallNumber = !matchDescriptionToCallNumber;
-                    LoadQuestion();
+                            currentQuestionIndex++;
+                            matchDescriptionToCallNumber = !matchDescriptionToCallNumber;
+                            LoadQuestion();
+                        }
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("You have completed all the questions.");
+            }
         }
+
 
     }
 }
