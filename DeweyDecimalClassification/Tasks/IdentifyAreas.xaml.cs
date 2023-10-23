@@ -40,8 +40,8 @@ namespace DeweyDecimalClassification.Tasks
             questionDictionary.Add("400 ", "Language - Language");
             questionDictionary.Add("500 ", "Natural Sciences & Mathematics - Science");
             questionDictionary.Add("600 ", "Technology (Applied Sciences) - Technology, engineering & applied operations");
-            questionDictionary.Add("700 ", "Arts &  Recreation - Arts, recreation &  performing arts");
-            questionDictionary.Add("800 ", "Literature - Literature &amp; rhetoric");
+            questionDictionary.Add("700 ", "Arts & Recreation - Arts, recreation & performing arts");
+            questionDictionary.Add("800 ", "Literature - Literature & rhetoric");
             questionDictionary.Add("900 ", "History & Geography - History & geography");
 
             questionKeys = questionDictionary.Keys.ToList();
