@@ -1,11 +1,26 @@
-﻿using DeweyDecimalClassification.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media.Animation;
+using System.Xml.Linq;
+
+
+/*
+* CODE ATTRIBUTION - PROGRESS BAR / ANIMATION
+* https://wpf-tutorial.com/misc-controls/the-progressbar-control/
+*/
+
+/*
+* CODE ATTRIBUTION - DICTIONARIES
+* https://www.tutorialsteacher.com/csharp/csharp-dictionary
+*/
+
+/*
+* CODE ATTRIBUTION - DURATION METHOD
+* https://learn.microsoft.com/en-us/dotnet/api/system.timespan.duration?view=net-7.0
+*/
 
 namespace DeweyDecimalClassification.Tasks
 {
@@ -15,11 +30,9 @@ namespace DeweyDecimalClassification.Tasks
         private List<string> questionKeys = new List<string>();
         private int currentQuestionIndex = 0;
         private int correctAnswers = 0;
-        private bool matchDescriptionToCallNumber = true; // Toggle between true and false to alternate
-        private List<string> possibleAnswers = new List<string>();
+        private bool matchDescriptionToCallNumber = true;
         private Duration duration = new Duration(TimeSpan.FromSeconds(1));
         private double percentage;
-
 
         public IdentifyAreas()
         {
@@ -28,6 +41,7 @@ namespace DeweyDecimalClassification.Tasks
             InitializeQuestions();
             ShuffleQuestions();
             LoadQuestion();
+            UpdateProgressBar();
         }
 
         private void InitializeQuestions()
@@ -114,11 +128,12 @@ namespace DeweyDecimalClassification.Tasks
             }
             else
             {
-                MessageBox.Show("You have completed all the questions.");
+                MessageBox.Show("Congratulations, you have completed all the questions.", "Feedback", MessageBoxButton.OK, MessageBoxImage.Information);
+                currentQuestionIndex = 0; // Reset questions after answering 10
+                correctAnswers = 0; // Reset the score after answering 10 questions
+                percentage = 0; // Reset the percentage after answering 10 questions
             }
         }
-
-
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -135,12 +150,13 @@ namespace DeweyDecimalClassification.Tasks
                         if (selectedAnswer == callNumber)
                         {
                             // User's answer is correct
-                            MessageBox.Show("Correct!");
+                            MessageBox.Show("Correct!", "Feedback", MessageBoxButton.OK, MessageBoxImage.Information);
                             correctAnswers++;
+                            currentQuestionIndex++;
                         }
                         else
                         {
-                            MessageBox.Show("Incorrect. The correct answer is " + callNumber);
+                            MessageBox.Show("Incorrect. The correct answer is " + callNumber, "Feedback", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                     }
                     else
@@ -151,22 +167,22 @@ namespace DeweyDecimalClassification.Tasks
                         if (selectedAnswer == description)
                         {
                             // User's answer is correct
-                            MessageBox.Show("Correct!");
+                            MessageBox.Show("Correct!", "Feedback", MessageBoxButton.OK, MessageBoxImage.Information);
                             correctAnswers++;
+                            currentQuestionIndex++;
                         }
                         else
                         {
-                            MessageBox.Show("Incorrect. The correct answer is " + description);
-                        }
+                            MessageBox.Show("Incorrect. The correct answer is " + description, "Feedback", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }                        
                     }
-
-                    currentQuestionIndex++;
+                    
                     matchDescriptionToCallNumber = !matchDescriptionToCallNumber; // Toggle between true and false
                     LoadQuestion();
                 }
                 else
                 {
-                    MessageBox.Show("Please select an answer.");
+                    MessageBox.Show("Please select an answer.", "Feedback", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
 
@@ -176,118 +192,35 @@ namespace DeweyDecimalClassification.Tasks
 
         private void UpdateProgressBar()
         {
-            double newPercentage = (correctAnswers / (double)questionKeys.Count) * 100;
+            double newPercentage = (correctAnswers / 10.0) * 100;
 
             DoubleAnimation da = new DoubleAnimation(percentage, newPercentage, duration);
             progressBar.BeginAnimation(ProgressBar.ValueProperty, da);
 
             percentage = newPercentage;
-
-            if (percentage >= 100)
-            {
-                txtComment.Text = "You have answered all 10 questions!";
-            }
+            
+            // Update the level and score
+            txtComment.Text = $"Score: {correctAnswers}";
         }
 
-       
-
-        //private void CheckAnswers()
-        //{
-        //    int correctAnswers = 0;
-
-        //    foreach (var pair in selectedPairs)
-        //    {
-        //        if (pair.Item1 != null && pair.Item2 != null)
-        //        {
-        //            var description = pair.Item1.Content.ToString();
-        //            var callNumber = pair.Item2.Content.ToString();
-        //            var question = new Question(callNumber, description);
-
-        //            if (questionDictionary.TryGetValue(question, out var possibleAnswers))
-        //            {
-        //                var selectedItem = (ListBoxItem)Column2.SelectedItem;
-        //                if (selectedItem != null)
-        //                {
-        //                    var selectedAnswer = selectedItem.Content.ToString();
-
-        //                    if (possibleAnswers.Contains(selectedAnswer))
-        //                    {
-        //                        correctAnswers++;
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    MessageBox.Show($"You got {correctAnswers} out of 3 correct.");
-
-        //    // Clear the selected pairs and load the next question
-        //    selectedPairs.Clear();
-        //    currentQuestionIndex++;
-        //    LoadQuestion();
-        //}
-        
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main = new MainWindow();
+            SignIn signin = new SignIn();
+
+            if (string.IsNullOrEmpty(signin.txtStudentNumber.Text))
+            {
+                main.lblStudentNumber.Visibility = Visibility.Hidden;
+            }
+
+            if (string.IsNullOrEmpty(signin.txtNames.Text))
+            {
+                main.lblName.Visibility = Visibility.Hidden;
+            }
+
             Visibility = Visibility.Collapsed;
             main.Show();
-        }
-
-        private void Column2Item_Click(object sender, MouseButtonEventArgs e)
-        {
-            if (currentQuestionIndex < questionKeys.Count)
-            {
-                var listBox = (ListBox)sender; // The sender should be the ListBox itself
-
-                if (listBox.SelectedItem != null && listBox.SelectedItem is ListBoxItem selectedItem)
-                {
-                    if (selectedItem.IsEnabled)
-                    {
-                        selectedItem.IsEnabled = false;
-
-                        if (matchDescriptionToCallNumber)
-                        {
-                            var selectedAnswer = selectedItem.Content.ToString();
-                            var callNumber = questionKeys[currentQuestionIndex];
-                            if (selectedAnswer == callNumber)
-                            {
-                                MessageBox.Show("Correct!");
-                                correctAnswers++;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Incorrect. The correct answer is " + callNumber);
-                            }
-                        }
-                        else
-                        {
-                            var selectedAnswer = selectedItem.Content.ToString();
-                            var description = questionDictionary[questionKeys[currentQuestionIndex]];
-                            if (selectedAnswer == description)
-                            {
-                                MessageBox.Show("Correct!");
-                                correctAnswers++;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Incorrect. The correct answer is " + description);
-                            }
-
-                            currentQuestionIndex++;
-                            matchDescriptionToCallNumber = !matchDescriptionToCallNumber;
-                            LoadQuestion();
-                        }
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("You have completed all the questions.");
-            }
-        }
-
-
+        }        
     }
 }
 

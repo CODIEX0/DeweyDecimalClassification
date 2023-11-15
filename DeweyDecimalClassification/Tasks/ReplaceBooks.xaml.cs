@@ -37,6 +37,18 @@ namespace DeweyDecimalClassification.Tasks
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main = new MainWindow();
+            SignIn signin = new SignIn();
+
+            if (string.IsNullOrEmpty(signin.txtStudentNumber.Text))
+            {
+                main.lblStudentNumber.Visibility = Visibility.Hidden;
+            }
+
+            if (string.IsNullOrEmpty(signin.txtNames.Text))
+            {
+                main.lblName.Visibility = Visibility.Hidden;
+            }
+
             Visibility = Visibility.Collapsed;
             main.Show();
         }
@@ -151,27 +163,6 @@ namespace DeweyDecimalClassification.Tasks
             int temp = list[index1];
             list[index1] = list[index2];
             list[index2] = temp;
-        }
-
-        private void UpdatePercentage(object sender)
-        {
-            TextBox textBox = (TextBox)sender;
-
-            bool enteredCorrectValue = textBox.Text.Equals(orderedCallNumbers[0]);
-            double perc = percentage;
-
-            if (enteredCorrectValue)
-            {
-                percentage += 10; // Increase percentage by 10
-            }
-            else
-            {
-                percentage -= 10; // Deduct 10 from percentage
-            }
-
-            // Animation to update the progress bar with the new percentage
-            DoubleAnimation da = new DoubleAnimation(percentage, duration);
-            progressBar.BeginAnimation(ProgressBar.ValueProperty, da);
         }
 
         private void tbxcn1_TextChanged(object sender, TextChangedEventArgs e)

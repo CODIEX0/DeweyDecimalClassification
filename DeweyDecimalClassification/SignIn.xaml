@@ -171,7 +171,7 @@
                 <TextBlock Text="" Height="25"/>
 
                 <TextBlock TextWrapping="Wrap" Text="Student Number:" Style="{StaticResource normalText}"  FontWeight="Bold" HorizontalAlignment="Center"/>
-                <TextBox x:Name="txtStudentNumber"  Background="Transparent" BorderThickness="1" BorderBrush="#FF23CB98"  Foreground="#FF23CB98" Width="266" SelectionTextBrush="Black" TextChanged="txtStudentNumber_TextChanged"  >
+                <TextBox x:Name="txtStudentNumber"  Background="Transparent" BorderThickness="1" BorderBrush="#FF23CB98"  Foreground="#FF23CB98" Width="266" SelectionTextBrush="Black"  >
 
                     <TextBox.ToolTip >
                         <ToolTip  ToolTipService.ShowDuration="6000">
@@ -184,7 +184,7 @@
 
                 <TextBlock Text="" Height="10" />
                 <TextBlock TextWrapping="Wrap" Text="Name and Surname:" Style="{StaticResource normalText}"  FontWeight="Bold" HorizontalAlignment="Center" />
-                <TextBox x:Name="txtNames"  Background="Transparent"  BorderThickness="1" BorderBrush="#FF23CB98"  Foreground="#FF23CB98" Width="266"  SelectionTextBrush="Black" TextChanged="txtNames_TextChanged">
+                <TextBox x:Name="txtNames"  Background="Transparent"  BorderThickness="1" BorderBrush="#FF23CB98"  Foreground="#FF23CB98" Width="266"  SelectionTextBrush="Black" >
                     <TextBox.ToolTip>
                         <ToolTip ToolTipService.ShowDuration="6000">
                             <StackPanel>
