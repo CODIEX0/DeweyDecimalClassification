@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeweyDecimalClassification.Tasks"
         mc:Ignorable="d"
-        Title="FindCallNumbers" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
-</Window>
+        Icon="/icon.png"
+        Title="FindCallNumbers Books" Height="649.5" Width="1100" Background="#FFECFEFF"        
+        WindowStartupLocation="CenterScreen">
+    
+        <Grid Height="630" Width="1100" >
+
+            <Button Name="btnBack" Content="Back" Style="{StaticResource mainButton}"  Height="58" Margin="10,10,944,562" Click="btnBack_Click" />
+
+            <TextBlock x:Name="txtComment" Style="{StaticResource titleText}" Foreground="#FF23CB98" Margin="201,18,229,562" HorizontalAlignment="Center" />
+
+            <Image x:Name="ImgFire" Margin="967,34,38,510" Visibility="Hidden" Source="/Img/fire.png"/>
+
+            <StackPanel Name="stackPanel" Margin="1000,112,71,112">
+                <Grid>
+                    <ProgressBar Name="progressBar" Height="406" Width="29" Background="#FFECFEFF" Foreground="#FF23CB98" Orientation="Vertical"/>
+                    <TextBlock Text="{Binding ElementName=progressBar, Path=Value, StringFormat={}{0:0}%}" FontSize="10" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+
+
+
+
+
+        <Button Name="btnFindCallNumbers" Content="Find Call Numbers"  Style="{StaticResource mainButton}"  Height="58" Width="250" Margin="425,536,425,36" Click="btnReplaceBooks_Click" />
+        </Grid>
+    </Window>
+

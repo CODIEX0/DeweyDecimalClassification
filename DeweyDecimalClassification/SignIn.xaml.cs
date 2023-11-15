@@ -19,19 +19,11 @@ namespace DeweyDecimalClassification
     /// </summary>
     public partial class SignIn : Window
     {
+        public string student_number, name;
+
         public SignIn()
         {
             InitializeComponent();
-        }
-
-        private void txtStudentNumber_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void txtNames_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
@@ -39,12 +31,24 @@ namespace DeweyDecimalClassification
             //creating a main window object
             MainWindow mainWindow = new MainWindow();
 
-            //assign values from the sign in window to the 3 labels
-            mainWindow.txtName.Content = txtNames.Text.ToUpper();
-            mainWindow.txtStudentNumber.Content = txtStudentNumber.Text.ToUpper();
+            //assign values from the sign in window to the 2 labels
+            student_number = txtStudentNumber.Text;
+            name = txtNames.Text;
 
-            //alert the user that they signed in successfully
-            MessageBox.Show("Successfully Signed In!", "Signed In", MessageBoxButton.OK, MessageBoxImage.Information);
+            mainWindow.txtName.Content = name.ToUpper();
+            mainWindow.txtStudentNumber.Content = student_number.ToUpper();
+
+            if(name.Length > 0 )
+            {
+                //alert the user that they signed in successfully
+                MessageBox.Show($"Signed In As {name}", "Signed In", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                //alert the user that they signed in successfully
+                MessageBox.Show("Successfully Signed In!", "Signed In", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
 
             //hide the current window
             Visibility = Visibility.Hidden;

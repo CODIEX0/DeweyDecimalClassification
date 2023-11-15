@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeweyDecimalClassification.Tasks"
         mc:Ignorable="d"
+        Icon="/icon.png"
         Title="IdentifyAreas"  Height="649.5" Width="1100" Background="#FFECFEFF"        
         WindowStartupLocation="CenterScreen">
 
@@ -14,33 +15,18 @@
         <Image x:Name="ImgFire" Margin="967,34,38,510" Visibility="Hidden" Source="/Img/fire.png" />
         <Border Background="#FFA6EBDA" CornerRadius="20" Margin="208,144,236,144">
             <Grid Margin="0,10,0,0">
-                <TextBlock Name="txtOrderNumbers" Text="Match Column A With Column B" FontSize="30" FontWeight="UltraBlack" Height="50" Foreground="White" HorizontalAlignment="Center" Margin="0,2,0,280" />
+                <TextBlock Name="txtOrderNumbers" Text="Choose The Correct Answer From Column B" FontSize="30" FontWeight="UltraBlack" Height="50" Foreground="White" HorizontalAlignment="Center" Margin="0,2,0,280" />
                 <Grid>
-                    <ListBox Name="Column1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,59,0,0" Width="206">
-                        <ListBoxItem Content = "000 " Height = "24" HorizontalAlignment = "Center" />
-                        <ListBoxItem Content = "100 " Height = "24" HorizontalAlignment = "Center" />
-                        <ListBoxItem Content = "200 " Height = "24" HorizontalAlignment = "Center" />
-                        <ListBoxItem Content = "300 " Height = "24" HorizontalAlignment = "Center" />
-                        <ListBoxItem Content = "400 " Height = "24" HorizontalAlignment = "Center" />
-                        <ListBoxItem Content = "500 " Height = "24" HorizontalAlignment = "Center" />
-                        <ListBoxItem Content = "600 " Height = "24" HorizontalAlignment = "Center" />
-                        <ListBoxItem Content = "700 " Height = "24" HorizontalAlignment = "Center" />
-                        <ListBoxItem Content = "800 " Height = "24" HorizontalAlignment = "Center" />
-                        <ListBoxItem Content = "900 " Height = "24" HorizontalAlignment = "Center" />
+                    <TextBlock Text="Column A (Question)" FontSize="20" FontWeight="UltraBlack" Foreground="White" HorizontalAlignment="Center" Margin="0,72,0,222" />
+                    <ListBox Name="Column1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,110,0,0" Width="472">
+                        <ListBoxItem Content = "Technology (Applied Sciences) - Technology, engineering &amp; applied operations" Height = "24" HorizontalAlignment = "Center" />
                     </ListBox>
-                    <ListBox Name="Column2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,59,10,0" PreviewMouseDown="Column2Item_Click" Width="430">
+                    <TextBlock  Text="Column B (Possible Answers)" FontSize="20" FontWeight="UltraBlack" Foreground="White" HorizontalAlignment="Center" Margin="0,172,0,122" />
+                    <ListBox Name="Column2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,210,87,0"  Width="472">
                         <ListBoxItem Content = "Dewey, Melvil - Dewey, Melvil" />
                         <ListBoxItem Content = "Literature - Literature &amp; rhetoric" />
                         <ListBoxItem Content = "Natural Sciences &amp; Mathematics - Science" />
                         <ListBoxItem Content = "Philosophy &amp; Psychology - Philosophy, parapsychology &amp; occultism" />
-                        <ListBoxItem Content = "Arts &amp; Recreation - Arts, recreation &amp; performing arts" />
-                        <ListBoxItem Content = "Religion - Religion" />
-                        <ListBoxItem Content = "Herman, Jerry - Herman, Jerry" />
-                        <ListBoxItem Content = "Technology (Applied Sciences) - Technology, engineering &amp; applied operations" />
-                        <ListBoxItem Content = "Language - Language" />
-                        <ListBoxItem Content = "Social Sciences - Social sciences" />
-                        <ListBoxItem Content = "History &amp; Geography - History &amp; geography" />
-                        <ListBoxItem Content = "Generalities - Computer science, information &amp; general works" />
                     </ListBox>
                 </Grid>
             </Grid>

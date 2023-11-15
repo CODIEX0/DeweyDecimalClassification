@@ -23,5 +23,15 @@ namespace DeweyDecimalClassification.Tasks
         {
             InitializeComponent();
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnReplaceBooks_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
