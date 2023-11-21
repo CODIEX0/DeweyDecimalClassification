@@ -28,5 +28,32 @@ A Dewey Decimal Classification app to make learning about the Dewey Decimal syst
     transform: translateY(-10px);
   }
 }
+
+  <div class="dewey-decimal-animation">
+  <span>D</span>
+  <span>2</span>
+  <span>3</span>
+  <span>5</span>
+  <span>.</span>
+  <span>7</span>
+</div>
+
+<style>
+.dewey-decimal-animation {
+  font-size: 2em;
+  display: inline-block;
+  animation: rotateWheel 5s infinite linear;
+}
+
+@keyframes rotateWheel {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
+
 </style>
 
